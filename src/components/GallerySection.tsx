@@ -127,22 +127,8 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onPhotoClick }) 
                 </div>
 
                 {/* Polaroid Caption Area */}
-                <div
-                  style={{
-                    paddingTop: '12px',
-                    paddingBottom: '4px',
-                    textAlign: 'center',
-                  }}
-                >
-                  <p
-                    className="font-hand"
-                    style={{
-                      fontSize: '1.25rem',
-                      color: '#203C43',
-                      fontWeight: 600,
-                      lineHeight: 1.3,
-                    }}
-                  >
+                <div className="polaroid-caption">
+                  <p className="font-hand">
                     {photo.caption}
                   </p>
                 </div>
