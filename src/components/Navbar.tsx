@@ -59,29 +59,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onReopenInvitation }) => {
   };
 
   return (
-    <header
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        transition: 'all 0.3s ease',
-        backgroundColor: scrolled ? 'rgba(255, 249, 241, 0.92)' : 'rgba(255, 249, 241, 0.6)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: scrolled ? '1px solid rgba(231, 212, 189, 0.7)' : '1px solid transparent',
-        boxShadow: scrolled ? '0 4px 20px -2px rgba(32, 60, 67, 0.06)' : 'none',
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: '64px',
-        }}
-      >
+    <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
+      <div className="navbar-container">
         {/* Logo / Title */}
         <a
           href="#top"
@@ -89,45 +68,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onReopenInvitation }) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            color: '#203C43',
-            fontWeight: 700,
-            fontSize: '1.05rem',
-            fontFamily: "'Playfair Display', Georgia, serif",
-          }}
+          className="navbar-brand"
         >
-          <span style={{ fontSize: '1.25rem' }}>🌻</span>
+          <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>🌻</span>
           <span>{birthdayConfig.recipientName}</span>
         </a>
 
         {/* Navigation Actions */}
-        <nav
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-          }}
-          aria-label="Main Navigation"
-        >
+        <nav className="navbar-nav" aria-label="Main Navigation">
           <button
             onClick={() => scrollTo('memories')}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '8px 14px',
-              borderRadius: '999px',
-              fontSize: '0.88rem',
-              fontWeight: 600,
-              color: '#246B70',
-              backgroundColor: 'rgba(197, 230, 221, 0.35)',
-              transition: 'background-color 0.2s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(197, 230, 221, 0.6)')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(197, 230, 221, 0.35)')}
+            className="nav-pill nav-pill-photos"
+            title="Photos dekhein"
           >
             <Camera size={15} />
             <span>Photos</span>
@@ -135,63 +87,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onReopenInvitation }) => {
 
           <button
             onClick={() => scrollTo('letter')}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '8px 14px',
-              borderRadius: '999px',
-              fontSize: '0.88rem',
-              fontWeight: 600,
-              color: '#EE9B87',
-              backgroundColor: 'rgba(238, 155, 135, 0.15)',
-              transition: 'background-color 0.2s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(238, 155, 135, 0.25)')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(238, 155, 135, 0.15)')}
+            className="nav-pill nav-pill-note"
+            title="Khaas note padhein"
           >
             <Mail size={15} />
-            <span>Khaas Note</span>
+            <span className="nav-text-desktop">Khaas Note</span>
+            <span className="nav-text-mobile">Note</span>
           </button>
 
           <button
             onClick={() => scrollTo('make-a-wish')}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '8px 14px',
-              borderRadius: '999px',
-              fontSize: '0.88rem',
-              fontWeight: 600,
-              color: '#203C43',
-              backgroundColor: 'rgba(246, 201, 167, 0.4)',
-              transition: 'background-color 0.2s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(246, 201, 167, 0.65)')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(246, 201, 167, 0.4)')}
+            className="nav-pill nav-pill-wish"
+            title="Wish maangiye"
           >
             <Sparkles size={15} />
-            <span>Wish Maangiye</span>
+            <span className="nav-text-desktop">Wish Maangiye</span>
+            <span className="nav-text-mobile">Wish</span>
           </button>
 
           {onReopenInvitation && (
             <button
               onClick={onReopenInvitation}
+              className="nav-pill nav-pill-replay"
               title="Surprise dobara dekhein"
               aria-label="Surprise dobara dekhein"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '4px',
-                padding: '8px 12px',
-                borderRadius: '999px',
-                fontSize: '0.82rem',
-                fontWeight: 600,
-                color: '#246B70',
-                backgroundColor: 'rgba(197, 230, 221, 0.25)',
-                transition: 'background-color 0.2s',
-              }}
             >
               <span>💌</span>
             </button>
@@ -207,15 +126,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onReopenInvitation }) => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '36px',
-                height: '36px',
+                width: '32px',
+                height: '32px',
                 borderRadius: '50%',
                 backgroundColor: isPlaying ? '#246B70' : 'rgba(36, 107, 112, 0.1)',
                 color: isPlaying ? '#FFF9F1' : '#246B70',
                 transition: 'all 0.2s',
+                flexShrink: 0,
               }}
             >
-              {isPlaying ? <Volume2 size={16} /> : <VolumeX size={16} />}
+              {isPlaying ? <Volume2 size={15} /> : <VolumeX size={15} />}
             </button>
           )}
         </nav>
