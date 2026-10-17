@@ -467,3 +467,59 @@ img {
   }
 }
 
+/* ==========================================================================
+   GALLERY SECTION RESPONSIVE STYLES
+   ========================================================================== */
+.gallery-section {
+  background-color: #FFF9F1;
+  padding-top: 64px;
+  padding-bottom: 90px;
+  position: relative;
+}
+
+.gallery-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 40px auto;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px 26px;
+  align-items: start;
+}
+
+.gallery-card-landscape {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .gallery-card-landscape {
+    grid-column: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-section {
+    padding-top: 44px;
+    padding-bottom: 64px;
+  }
+
+  .gallery-header {
+    margin: 0 auto 26px auto;
+    padding: 0 4px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .gallery-grid .polaroid-card {
+    transform: none !important;
+    padding: 10px 10px 15px 10px;
+  }
+}
+
+

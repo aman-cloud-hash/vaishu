@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { birthdayConfig, type PhotoItem } from '../config';
-import { Camera, Sparkles, Grid, Layout } from 'lucide-react';
+import { Camera, Sparkles } from 'lucide-react';
 
 interface GallerySectionProps {
   onPhotoClick: (photo: PhotoItem) => void;
@@ -9,28 +9,12 @@ interface GallerySectionProps {
 
 export const GallerySection: React.FC<GallerySectionProps> = ({ onPhotoClick }) => {
   const { gallery } = birthdayConfig;
-  const [activeFilter, setActiveFilter] = useState<'all' | 'portrait' | 'landscape'>('all');
-  const [layoutMode, setLayoutMode] = useState<'scrapbook' | 'grid'>('scrapbook');
-
-  const filteredPhotos = gallery.photos.filter((p) => {
-    if (activeFilter === 'portrait') return p.orientation === 'portrait';
-    if (activeFilter === 'landscape') return p.orientation === 'landscape';
-    return true;
-  });
 
   return (
-    <section
-      id="memories"
-      style={{
-        backgroundColor: '#FFF9F1',
-        paddingTop: '60px',
-        paddingBottom: '90px',
-        position: 'relative',
-      }}
-    >
+    <section id="memories" className="gallery-section">
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 40px auto' }}>
+        <div className="gallery-header">
           <div
             className="coastal-badge"
             style={{
@@ -77,130 +61,13 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onPhotoClick }) 
           </p>
         </div>
 
-        {/* Gallery Controls (Filter & Layout Toggle) */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: '16px',
-            marginBottom: '36px',
-            padding: '12px 20px',
-            backgroundColor: '#FAF4EB',
-            borderRadius: '16px',
-            border: '1px solid rgba(231, 212, 189, 0.7)',
-          }}
-        >
-          {/* Filters */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#5E7E86', marginRight: '6px' }}>
-              Filter:
-            </span>
-            <button
-              onClick={() => setActiveFilter('all')}
-              style={{
-                padding: '6px 14px',
-                borderRadius: '999px',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                backgroundColor: activeFilter === 'all' ? '#246B70' : 'transparent',
-                color: activeFilter === 'all' ? '#FFF9F1' : '#203C43',
-                transition: 'all 0.2s',
-              }}
-            >
-              {gallery.controls.filterAll}
-            </button>
-            <button
-              onClick={() => setActiveFilter('portrait')}
-              style={{
-                padding: '6px 14px',
-                borderRadius: '999px',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                backgroundColor: activeFilter === 'portrait' ? '#246B70' : 'transparent',
-                color: activeFilter === 'portrait' ? '#FFF9F1' : '#203C43',
-                transition: 'all 0.2s',
-              }}
-            >
-              {gallery.controls.filterPortraits}
-            </button>
-            <button
-              onClick={() => setActiveFilter('landscape')}
-              style={{
-                padding: '6px 14px',
-                borderRadius: '999px',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                backgroundColor: activeFilter === 'landscape' ? '#246B70' : 'transparent',
-                color: activeFilter === 'landscape' ? '#FFF9F1' : '#203C43',
-                transition: 'all 0.2s',
-              }}
-            >
-              {gallery.controls.filterLandscape}
-            </button>
-          </div>
-
-          {/* Layout Mode Toggle */}
-          <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#5E7E86', marginRight: '6px' }}>
-              Andaaz:
-            </span>
-            <button
-              onClick={() => setLayoutMode('scrapbook')}
-              title="Scrapbook Andaaz"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '6px 12px',
-                borderRadius: '8px',
-                fontSize: '0.82rem',
-                fontWeight: 600,
-                backgroundColor: layoutMode === 'scrapbook' ? '#246B70' : 'rgba(36, 107, 112, 0.08)',
-                color: layoutMode === 'scrapbook' ? '#FFF9F1' : '#246B70',
-                transition: 'all 0.2s',
-              }}
-            >
-              <Layout size={14} />
-              <span>{gallery.controls.viewScrapbook}</span>
-            </button>
-            <button
-              onClick={() => setLayoutMode('grid')}
-              title="Clean Grid"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '6px 12px',
-                borderRadius: '8px',
-                fontSize: '0.82rem',
-                fontWeight: 600,
-                backgroundColor: layoutMode === 'grid' ? '#246B70' : 'rgba(36, 107, 112, 0.08)',
-                color: layoutMode === 'grid' ? '#FFF9F1' : '#246B70',
-                transition: 'all 0.2s',
-              }}
-            >
-              <Grid size={14} />
-              <span>{gallery.controls.viewGrid}</span>
-            </button>
-          </div>
-        </div>
-
         {/* Gallery Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-            gap: layoutMode === 'scrapbook' ? '32px 28px' : '24px',
-            alignItems: 'start',
-          }}
-        >
-          {filteredPhotos.map((photo, index) => {
+        <div className="gallery-grid">
+          {gallery.photos.map((photo, index) => {
             const isLandscape = photo.orientation === 'landscape';
             const tapeColors = ['washi-tape-teal', 'washi-tape-coral', 'washi-tape-lavender'];
             const tapeColor = tapeColors[index % tapeColors.length];
-            const hasTape = layoutMode === 'scrapbook' && (index % 3 === 0 || index % 5 === 0);
+            const hasTape = index % 3 === 0 || index % 5 === 0;
 
             return (
               <motion.div
@@ -209,11 +76,10 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onPhotoClick }) 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: (index % 6) * 0.08 }}
-                className="polaroid-card"
+                className={`polaroid-card ${isLandscape ? 'gallery-card-landscape' : ''}`}
                 onClick={() => onPhotoClick(photo)}
                 style={{
-                  gridColumn: isLandscape && layoutMode === 'scrapbook' ? 'span 2' : 'auto',
-                  transform: layoutMode === 'scrapbook' ? `rotate(${photo.rotation}deg)` : 'none',
+                  transform: `rotate(${photo.rotation}deg)`,
                   cursor: 'pointer',
                 }}
               >
