@@ -550,18 +550,6 @@ export const birthdayConfig: BirthdayConfig = {
     "orientation": "portrait",
     "caption": "Bas aise hi khush rahiye \ud83d\udc9b",
     "rotation": 1.6
-  },
-  {
-    "id": 33,
-    "originalFilename": "IMG-20261016-WA0119.jpg",
-    "src": "/photos/vaishu-33.jpg",
-    "thumb": "/photos/thumbs/vaishu-33-thumb.jpg",
-    "width": 720,
-    "height": 1280,
-    "aspectRatio": 0.5625,
-    "orientation": "portrait",
-    "caption": "Aaj ka poora din sirf aapke naam!",
-    "rotation": -1.4
   }
 ]
   },
