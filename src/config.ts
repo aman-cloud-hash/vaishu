@@ -574,11 +574,13 @@ export const birthdayConfig: BirthdayConfig = {
     salutation: 'Dearest Vaishu,',
     paragraphs: [
       'Happy Birthday, Vaishu! 🥳♥️',
-      'Aaj ka din tumhare liye khaas hai, toh khoob enjoy karo aur hamesha aise hi muskurati raho 😊 Aur haan madam, humare beech kabhi jhagda ho jaaye toh maaf kar diya karo… kuchu puchu 😚😂',
+      'Aaj ka din tumhare liye khaas hai, toh khoob enjoy karo aur hamesha aise hi muskurati raho 😊',
       'Dekhte-dekhte apni friendship ko 5–6 saal ho gaye hain. Tumhe apni sabse achhi dost bolun ya phir kuch aur, bas itna pata hai ki mere liye tum sabse best ho 😁',
-      'Tum meri baatein sunti ho, mujhe samajhti ho, aur mujhe pareshan bhi bahut karti ho 🤫😂 Mazak kar raha hoon… lekin sach mein, tum meri life mein bahut khaas ban gayi ho.',
+      'Tum meri baatein sunti ho, mujhe samajhti ho, aur mujhe pareshan bhi bahut karti ho 🤫😂 Mazak kar raha hoon… lekin sach mein, tum meri life mein bahut khaas ban gayi ho. Aur haan madam, humare beech kabhi jhagda ho jaaye toh maaf kar diya karo… kuchu puchu 😚😂',
       'Subah uthkar mummy ke baad tumhe hi dhoondhta hoon—phone dekhta hoon ki Vaishu ka message aaya hai ya nahi 🙂 Ab tumse baat karna mere din ka ek pyara sa hissa ban gaya hai.',
       'Aage ka future kisi ne nahi dekha, isliye abhi se bade-bade promises nahi karunga. Lekin aaj jo apna saath hai, woh mere liye bahut special hai. Bas yahi chahta hoon ki tum mere saath raho aur hum aise hi baatein karte rahein, ek dusre ko samajhte rahein aur thoda-bahut pareshan bhi karte rahein 😚😂',
+      'Jaldi milenge, Vaishu 🫶 Jab milenge na, toh sabse pehle ek dusre ko tight hug karenge 🫂 Phir saath mein time spend karenge, dher saari baatein karenge aur ghoomenge 😁',
+      'Tumhe Marine Drive pasand hai na? Wahan bhi jayenge, baithkar aaram se baatein karenge… aur jahan-jahan tumhara mann karega, sab jagah jayenge. Bas tum Mumbai aa jao, sweetheart 😚♥️',
       'Aaj aur kya bolun… bas itna hi ki **you are a very special person to me** ♥️',
       'Sooo, Happy Birthday toooo you, Vaishu! 😊😚\nAaj khoob enjoy karo madam, aur cake mein mera hissa yaad rakhna! 🎂😁'
     ],
